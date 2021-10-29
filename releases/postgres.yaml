@@ -1,0 +1,17 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: postgres
+  namespace: vivspace
+  annotations:
+    fluxcd.io/automated: "true"
+spec:
+  releaseName: postgres
+  interval: 60s
+  chart:
+    git: ssh://git@github.com/black-pebbles/k8s
+    ref: master
+    path: charts/postgres
+  values:
+    replicaCount: 1

@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: animals-deployment
+  namespace: podinfo
+  labels:
+    app: animals
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: animals
+  template:
+    metadata:
+      labels:
+        app: animals
+    spec:
+      containers:
+      - name: animals
+        image: vivswam2021/snowflake:1.0.0
+        command: [ "/bin/sh", "-c", "env" ]
+        ports:
+          - containerPort: 8888
+        env:
+          - name: POSTGRES_DB
+            value: wildlifedb
+        volumeMounts:
+          - name: application-config
+            mountPath: "/deployments/config"
+            readOnly: true
+      volumes:
+      - name: application-config
+        configMap:
+          name: spring-app-config
+          items:
+            - key: application.yml
+              path: application.yml

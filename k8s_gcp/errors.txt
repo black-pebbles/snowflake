@@ -1,0 +1,24 @@
+1. the following error was faced while creating a 3 node cluster.
+
+module.gke.google_container_node_pool.pools["default-node-pool"]: Creating...
+╷
+│ Error: error creating NodePool: googleapi: Error 403: Insufficient regional quota to satisfy request: resource "IN_USE_ADDRESSES": request requires '9.0' and is short '1.0'. project has a quota of '8.0' with '8.0' available. View and manage quotas at https://console.cloud.google.com/iam-admin/quotas?usage=USED&project=vivpro-328620., forbidden
+│
+
+the issue was due to quotas.
+
+Solution: Temporarily, I'm going ahead with 2 node cluster. Each node requires 3 static IP addresses, hence in total 9 are required.
+With 2 node, a total of 2 static addresses will be needed, to deal with this problem.
+
+Ideally, in a production setup, a quorum is required in odd numbers.
+
+
+2. module.gke.google_service_account.cluster_service_account[0]: Creating...
+╷
+│ Error: Error creating service account: googleapi: Error 403: Permission iam.serviceAccounts.create is required to perform this operation on project projects/vivpro-328620., forbidden
+│
+│   with module.gke.google_service_account.cluster_service_account[0],
+│   on .terraform/modules/gke/sa.tf line 39, in resource "google_service_account" "cluster_service_account":
+│   39: resource "google_service_account" "cluster_service_account" {
+
+Permission given for the required serviceAccounts (create). Also, added admin  

@@ -1,0 +1,14 @@
+# Cluster attributes
+name: postgres
+label: postgres
+pgport: 5432
+namespace: postgres
+strategy:
+  type: RollingUpdate
+
+
+# Docker Images
+tag: 13.4
+imageRegistry: docker.io
+repository: postgres
+pgbouncer: pgbouncer/pgbouncer:1.15.0

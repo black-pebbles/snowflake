@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: animals-cm
+  namespace: default
+data:
+  application.yml: |
+    server:
+      port: 8888
+    spring:
+      jpa:
+        hibernate:
+          ddl-auto: create
+      datasource:
+        platform: postgres
+        password: p@ssw0rd
+        username: postgres
+        url: jdbc:postgresql://postgres:5432/wildlifedb

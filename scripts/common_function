@@ -1,0 +1,8 @@
+#!/bin/bash
+
+export service_account_name='vivpocsa'
+export project_name='vivpro-328620'
+export region='us-east1'
+export bucket_name='vivpoc_bucket'
+export keyfile='vivpoc-keyfile.json'
+export GHUSER='black-pebbles'

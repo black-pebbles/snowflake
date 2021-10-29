@@ -1,0 +1,7 @@
+apiVersion: v3
+name: postgres
+version: 1.0.1
+appVersion: 13.4
+description: postgres on k8s
+type: application
+appVersion: '5.0.3'

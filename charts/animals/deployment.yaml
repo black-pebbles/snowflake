@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: animals-deployment
+spec:
+  selector:
+    matchLabels:
+      app: wildlife
+  replicas: 2 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: wildlife
+    spec:
+      containers:
+      - name: animal
+        image: vivswam2021/snowflake:1.0.0
+        ports:
+        - containerPort: 80

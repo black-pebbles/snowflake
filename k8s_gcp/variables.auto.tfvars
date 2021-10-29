@@ -1,0 +1,11 @@
+credentials = "./vivpoc-keyfile.json"
+project_id = "vivpro-328620"
+region = "us-east1"
+zones = ["us-east1-b","us-east1-c","us-east1-d"]
+name = "vivpoc-cluster"
+machine_type = "e2-small"
+min_count = 1
+max_count = 3
+disk_size_gb = 10
+service_account = "vivpocsa@vivpro-328620.iam.gserviceaccount.com"
+initial_node_count = 2

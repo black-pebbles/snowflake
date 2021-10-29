@@ -1,2 +1,2 @@
 # snowflake
-playing with k8s
+the k8s playground
