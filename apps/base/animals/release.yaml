@@ -17,21 +17,28 @@ spec:
     spec:
       containers:
       - name: animals
-        image: vivswam2021/snowflake:1.0.0
-        command: [ "/bin/sh", "-c", "env" ]
+        image: vivswam2021/snowflake:1.0.1
+        #command: [ "/bin/sh", "-c", "env" ]
         ports:
           - containerPort: 8888
         env:
-          - name: POSTGRES_DB
-            value: wildlifedb
-        volumeMounts:
-          - name: application-config
-            mountPath: "/deployments/config"
-            readOnly: true
-      volumes:
-      - name: application-config
-        configMap:
-          name: spring-app-config
-          items:
-            - key: application.yml
-              path: application.yml
+          - name: POSTGRES_SERVICE
+            valueFrom:
+              configMapKeyRef:
+                name: postgres-config
+                key: postgres.service.name
+          - name: POSTGRES_DB_NAME
+            valueFrom:
+              configMapKeyRef:
+                name: postgres-config
+                key: postgres.db.name
+          - name: POSTGRES_DB_USER
+            valueFrom:
+              configMapKeyRef:
+                name: postgres-config
+                key: db.user.name
+          - name: POSTGRES_DB_USER
+            valueFrom:
+              configMapKeyRef:
+                name: postgres-config
+                key: db.user.name

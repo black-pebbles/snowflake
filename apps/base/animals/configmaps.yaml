@@ -1,18 +1,12 @@
 apiVersion: v1
+data:
+  spring.datasource.platform: postgres
+  spring.datasource.password: password
+  spring.datasource.username: postgres
+  spring.datasource.url: 'jdbc:postgresql://postgresql:5432/wildlifedb'
+  spring.jpa.hibernate.ddl-auto: create
+  server.port: "8888"
 kind: ConfigMap
 metadata:
-  name: spring-app-config
+  name: postgres-config
   namespace: podinfo
-data:
-  application.yml: |
-    server:
-      port: 8888
-    spring:
-      jpa:
-        hibernate:
-          ddl-auto: create
-      datasource:
-        platform: postgres
-        password: p@ssw0rd
-        username: postgres
-        url: jdbc:postgresql://postgresql:5432/wildlifedb
