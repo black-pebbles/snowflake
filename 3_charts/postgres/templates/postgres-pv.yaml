@@ -19,6 +19,7 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: postgresql-pv
+  namespace: {{ .Values.namespace }}
 spec:
   storageClassName: regionalpd-storageclass
   accessModes:
